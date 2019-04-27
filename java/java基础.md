@@ -1,1 +1,7 @@
+---
+typora-root-url: ..
+---
 
+找我阿斯顿发斯蒂芬asdfasdfasdasdfaaaaaaaaaaaafffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+
+![1556371262339](/C:/Users/Axing/AppData/Roaming/Typora/typora-user-images/1556371262339.png)
