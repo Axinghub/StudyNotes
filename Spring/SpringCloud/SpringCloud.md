@@ -385,5 +385,97 @@ Feign通过接口的方法调用Rest服务（之前是Ribbon+RestTemplate）
 @HystrixCommand(fallbackMethod = "processHystrix_Get")
 ```
 
+一般是某个服务故障或者异常引起。类似现实世界中的“保险丝”，当某个异常条件被触发，直接熔断整个服务，而不是一直等待此服务超时。
+
+
+
+**服务降级**
+
+所谓降级，一般就是从整体的负荷考虑，就是当某个服务熔断之后，服务器将不再调用。
+
+此时客户端可以自己准备一个本地的fallback回调，返回一个缺省值，
+
+这样做，虽然服务水平下降，但好歹可用。比直接挂掉要强
+
+**hystrix Dashboard**
+
+除了隔离依赖服务调用以外，hystrix还提供了准时的实时的调用监控（hystrix Dashboard），hystrix会持续记录所有通过Hystrix发起的请求的执行信息，并统计报表和图形的形式展示给用户，包括每秒执行多少请求多少成功多少失败等，Netflix通过Hystrix-metrics-event-stream项目实现了对以上指标的监控，springCloud 也提供了Hystrix Dashboard 的整合，对监控内容转化成可视化界面。 
+
+实心圆：有两种含义。他通过颜色的变化代表了实例的健康程度，他的健康度从绿色<黄色<橙色<红色递减。
+
+改实心圆除了颜色变化之外，他的大小也会根据实例请求量发生变化，流量越大，该实心圆就越大，所以通过该实心圆的展示，就可以在大量的实例中快速的发现故障实例和高压力实例
+
+<http://localhost:9001/hystrix/monitor>
+
+### Zuul
+
+------
+
+Zuul包含了对请求的路由和过滤两个主要功能：
+
+其中路由功能负责将外部请求转发到具体的微服务实例上，是实现外部访问统一入口的基础而过滤器功能则负责将对请求的处理过程进行干预，是实现请求校验、服务聚合等功能的基础。Zuul和Eureka进行整合，将Zuul自身注册为Eureka服务治理下的应用，同时从Eureka中获得其他其他微服务的消息，也即以后的访问微服务都是通过Zuul跳转后获得的。
+
+注意：Zuul服务最终还是会注册进Eureka
+
+代理+路由+过滤
+
+
+
+
+
+### Springcloud config 分布式配置中心
+
+SpringCloud Config微服务架构中的微服务提供集中化外部配置支持，配置服务器为各个不同的微服务应用的所有环境提供了一个中心化的外部配置。
+
+SpringCloud Config 分为服务端和客户端两部分。
+
+服务端也称为分布式配置中心，它是一个独立的微服务应用，用来连接配置服务器并为客户端提供获取和加载配置信息，配置服务器默认采用git来存储配置信息，这样就有助于对于环境进行版本管理，并且可以通过git客户端工具来方便的管理和访问配置内容。
+
+**能干嘛：**
+
+集中管理配置文件
+
+不同环境不同配置，动态化的配置更新，分环境部署，比如dev/test/prod/bata/release
+
+运行期间动态调整配置，不再需要在每个服务部署的机器上编写配置文件，服务会向配置中心统一拉取配置自己的信息
+
+当配置信息发生变动时，服务不需要重启即可感知到配置的变化并应用新的配置
+
+将配置信息以REST接口的形式暴露
+
+git：
+
+git status
+
+git add .
+
+git commit -m "init file"
+
+git push origin master
+
+
+
+读取：
+
+<http://localhost:3344/master/application-dev.yml>
+
+<http://localhost:3344/application-dev.yml>
+
+<http://localhost:3344/application/dev/master>
+
+
+
+
+
+application.yml是用户级别的资源配置项
+
+bootstrap.yml是系统级的，优先级更高
+
+springcloud会创建一个BootStrap Context，作为Spring应用的Application Context的父上下文，初始化的时候，BootStrap Context负责从外部资源加载配置属性并解析配置，这两个上下文共享一个从外部获取的Environment，BootStrap属性有高优先级，默认情况下，它们不会被本地配置覆盖，BootStrap context和Application context有着不同的约定，所以新增了一个bootstrap。yml文件，保证bootstrap context和Application配置的分离。
+
+
+
+
+
 
 
