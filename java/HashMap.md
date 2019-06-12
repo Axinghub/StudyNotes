@@ -1,29 +1,10 @@
-```java
-/*
- * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
- * ORACLE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- */
+### HashMap
 
+------
+
+
+
+```java
 package java.util;
 
 import java.io.IOException;
@@ -45,6 +26,8 @@ import java.util.function.Function;
  * the order of the map; in particular, it does not guarantee that the order
  * will remain constant over time.
  *
+ * 基于哈希表的Map接口的实现。此实现提供了所有可选的映射操作，并允许值为null和键为null。 （HashMap 类大致相当于 Hashtable，除了它是不同步的并且允许空值。）这个类不保证Map的顺序; 特别是，它不保证该顺序恒久不变。
+ *
  * <p>This implementation provides constant-time performance for the basic
  * operations (<tt>get</tt> and <tt>put</tt>), assuming the hash function
  * disperses the elements properly among the buckets.  Iteration over
@@ -53,6 +36,8 @@ import java.util.function.Function;
  * of key-value mappings).  Thus, it's very important not to set the initial
  * capacity too high (or the load factor too low) if iteration performance is
  * important.
+ *
+ * 此实现为基本操作（ get 和 put ）提供了恒定时间性能，假设散列函数在桶之间正确地分散元素。 对集合视图的迭代 需要 HashMap 实例的“容量”（桶数）加上其大小（键值映射的数量）与时间成比例。 因此，如果迭代性能很重要，则不要将初始容量设置得太高（或负载因子太低）非常重要。
  *
  * <p>An instance of <tt>HashMap</tt> has two parameters that affect its
  * performance: <i>initial capacity</i> and <i>load factor</i>.  The
@@ -65,6 +50,8 @@ import java.util.function.Function;
  * structures are rebuilt) so that the hash table has approximately twice the
  * number of buckets.
  *
+ * HashMap 的实例有两个影响其性能的参数：初始容量 和 加载因子 。  capacity 是哈希表中的桶数，初始容量只是创建哈希表时的容量。 加载因子 衡量哈希表在其容量自动增加之前可以获得多长。 当哈希表中的条目数超过加载因子和当前容量的乘积时，哈希表 重新哈希（即重建内部数据结构），以便哈希表大约有 水桶数量的两倍。
+ *
  * <p>As a general rule, the default load factor (.75) offers a good
  * tradeoff between time and space costs.  Higher values decrease the
  * space overhead but increase the lookup cost (reflected in most of
@@ -76,6 +63,8 @@ import java.util.function.Function;
  * maximum number of entries divided by the load factor, no rehash
  * operations will ever occur.
  *
+ * 作为一般规则，默认负载系数（.75）在时间和空间成本之间提供了良好的权衡。 较高的值会减少空间开销，但会增加查找成本（反映在 HashMap 类的大多数操作中，包括 get 和 put ）。 在设置其初始容量时，应考虑映射中的预期条目数及其加载因子，以便最小化重新散列操作的数量。 如果初始容量大于最大条目数除以加载因子，则不会发生重新加载操作。
+ *
  * <p>If many mappings are to be stored in a <tt>HashMap</tt>
  * instance, creating it with a sufficiently large capacity will allow
  * the mappings to be stored more efficiently than letting it perform
@@ -84,6 +73,8 @@ import java.util.function.Function;
  * down performance of any hash table. To ameliorate impact, when keys
  * are {@link Comparable}, this class may use comparison order among
  * keys to help break ties.
+ *
+ *<p>如果要将多个映射存储在<tt> HashMap </ tt>实例中，那么使用足够大的容量创建映射将允许映射更有效地存储，而不是让它根据需要执行自动重新散列来增长表。 请注意，使用具有相同{@code hashCode（）}的许多键是降低任何哈希表性能的可靠方法。 为了改善影响，当密钥为{@link Comparable}时，此类可以使用密钥之间的比较顺序来帮助打破关系。
  *
  * <p><strong>Note that this implementation is not synchronized.</strong>
  * If multiple threads access a hash map concurrently, and at least one of
@@ -2386,6 +2377,4 @@ public class HashMap<K,V> extends AbstractMap<K,V>
     }
 
 }
-
 ```
-
