@@ -15,8 +15,9 @@
 13. Alt + Shift + R：重命名（包括文件名、类名、方法名、变量名等等，非常好用） 
 14. Alt + Shift + J：生成类或方法的注释 
 15. Alt + Shift + S：打开Source窗口（生成get、set方法，实现、覆盖接口或类的方法，很常用） 
-16. Alt + Shift + D, J：如果有main方法入口，则以Debug方式执行代码 
-17. Alt + Shift + X, J：如果有main方法入口，则以Run方式执行代码
+16. Ctrl+1(或者菜单Edit > Quick Fix)：可以显示修正意见，并在修正前显示预览。
+17. Alt + Shift + D, J：如果有main方法入口，则以Debug方式执行代码 
+18. Alt + Shift + X, J：如果有main方法入口，则以Run方式执行代码
 
 #### 常见概念和操作
 
