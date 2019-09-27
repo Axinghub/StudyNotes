@@ -15,3 +15,37 @@ git push origin master //将本地版本库推送到远程服务器， origin是
 
 https://blog.csdn.net/qq_37577660/article/details/78565899
 
+## gitlab删除已上传文件或文件夹
+
+将仓库拉取到本地
+
+```
+git clone .....
+```
+
+在本地仓库删除文件
+
+```
+git rm 文件名
+```
+
+在本地仓库删除文件夹
+
+```
+git rm -r 文件夹/
+
+//-r表示递归所有子目录，如果你要删除的是空文件夹，可以不用带-r
+```
+
+提交代码
+
+```
+git commit -m "提交描述"
+```
+
+推送到远程仓库
+
+```
+git push origin XXXXXX
+```
+

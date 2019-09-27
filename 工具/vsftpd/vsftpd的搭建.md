@@ -21,6 +21,9 @@
    useradd -d /home/ftp -s /sbin/nologin ftpname
    #设置主目录（更改登录时看到的目录）：
    usermod -d /opt ftpname
+   #useradd：警告：此主目录已经存在。
+   #不从 skel 目录里向其中复制任何文件。
+   userdel -rf ftpname
    ```
 
 4. 修改密码
