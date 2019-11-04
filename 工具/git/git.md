@@ -49,3 +49,29 @@ git commit -m "提交描述"
 git push origin XXXXXX
 ```
 
+```
+//删除idea
+git rm --cached -r .idea
+git commit -m 'delete .idea'
+git push origin master
+
+```
+
+### 提交
+
+```
+git add .
+
+git commit -m '更新信息'
+
+git push origin master
+```
+
+### .gitignore失效
+
+```
+git rm -r --cached .
+```
+
+
+
